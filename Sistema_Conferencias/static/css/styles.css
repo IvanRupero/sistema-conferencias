@@ -16,12 +16,20 @@ body {
     border-bottom: 4px solid var(--teschi-green);
 }
 
-/* Tarjetas estilo TESCHI (Split o Contenedores limpios) */
+/* Tarjetas estilo TESCHI */
 .card-institucional {
-    border: none;
-    border-radius: 12px;
+    border: none !important;
+    border-radius: 12px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background-color: #ffffff;
+}
+
+/* Efecto hover elegante para tarjetas */
+.card:hover, .card-institucional:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.08);
 }
 
 /* Botones con estilo institucional */
@@ -42,4 +50,39 @@ body {
 
 .bg-teschi {
     background-color: var(--teschi-green) !important;
+}
+
+/* Tipografía y encabezados mejorados */
+h1, h2, h3, h4, h5, h6, .text-bold {
+    font-weight: 700;
+    color: #2c3e50;
+    letter-spacing: -0.5px;
+}
+
+.text-muted {
+    color: #6c757d !important;
+    font-size: 0.9rem;
+}
+
+/* Tablas modernas y limpias para el panel */
+.table {
+    vertical-align: middle;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
 }
