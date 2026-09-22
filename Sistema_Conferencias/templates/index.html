@@ -1,25 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Sección Hero con fondo elegante de administración -->
 <div class="hero-admin-section">
     <div class="card card-welcome-admin shadow-lg">
         <div class="card-body p-5 text-center">
             
-            <!-- Icono superior ejecutivo representativo de Administración -->
             <div class="admin-icon-badge mb-3">
                 <i class="fas fa-chart-pie"></i>
             </div>
             
-            <!-- Badge de la jefatura -->
             <div class="badge-jefatura mb-3">
                 <i class="fas fa-user-tie me-1"></i> Panel de Jefatura de Carrera
             </div>
             
-            <!-- Título principal con tipografía fuerte -->
             <h1 class="brand-title">División de Administración</h1>
             
-            <!-- Subtítulo descriptivo -->
             <p class="brand-subtitle-text mb-4">
                 Sistema Integral de Control de Asistencia y Emisión de Constancias Académicas
             </p>
@@ -30,7 +25,6 @@
                 Selecciona la opción inferior para acceder al entorno de gestión, supervisar eventos académicos y administrar el control de constancias.
             </p>
             
-            <!-- Botón principal de acceso corregido y visible -->
             <div class="mt-4">
                 <a href="{{ url_for('admin_dashboard') }}" class="btn btn-admin-hero">
                     <i class="fas fa-tachometer-alt me-2"></i> Ir al Panel de Administración
