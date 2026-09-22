@@ -1,94 +1,38 @@
-/* --- NUEVOS COMPLEMENTOS PARA EL PANEL DE INICIO --- */
+/* --- CSS DEFINITIVO Y DIRECTO PARA EL INDEX --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
 
-/* Hero o contenedor principal con imagen de fondo y capa oscura para legibilidad */
-.hero-admin-section {
-    position: relative;
-    background: linear-gradient(135deg, rgba(33, 37, 41, 0.85), rgba(20, 108, 49, 0.80)), 
-                url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop') no-repeat center center;
-    background-size: cover;
-    min-height: calc(100vh - 140px); /* Ajuste dinámico para ocupar la pantalla */
+.main-content-wrapper {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    margin: 0 !important;
+    padding: 0 !important;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 20px;
+    flex-direction: column;
 }
-
-/* Tarjeta contenedora central con efecto elegante sobre el fondo */
-.card-welcome-admin {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-    padding: 40px;
-    max-width: 750px;
-    width: 100%;
-    text-align: center;
-}
-
-/* Tipografía específica para resaltar el branding de la carrera */
-.brand-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--teschi-dark);
-    margin-bottom: 10px;
-}
-
-.brand-subtitle {
-    font-size: 1.1rem;
-    color: var(--teschi-green-dark);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-/* Botón principal estilizado acorde a tu clase .btn-teschi pero con mayor presencia */
-.btn-admin-hero {
-    background-color: var(--teschi-green);
-    color: #fff;
-    font-size: 1.1rem;
-    padding: 12px 30px;
-    border-radius: 50px; /* Estilo de botón moderno redondeado (pill) */
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(27, 133, 63, 0.4);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-admin-hero:hover {
-    background-color: var(--teschi-green-dark);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(20, 108, 49, 0.6);
-}
-
-
-/* --- NUEVOS ESTILOS PARA EL PANEL DE INICIO (INDEX) --- */
-
-/* --- ESTILOS FINALES PARA EL PANEL DE INICIO (INDEX) --- */
 
 .hero-admin-section {
     position: relative;
-    width: 100%;
-    min-height: calc(100vh - 120px);
-    background: linear-gradient(135deg, rgba(33, 37, 41, 0.88), rgba(20, 108, 49, 0.82)), 
+    width: 100vw;
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, rgba(33, 37, 41, 0.9), rgba(20, 108, 49, 0.85)), 
                 url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop') no-repeat center center;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    margin-top: -20px;
 }
 
 .card-welcome-admin {
-    background: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(12px);
+    background: #ffffff !important;
     border: none !important;
     border-radius: 20px !important;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4) !important;
     max-width: 750px;
     width: 100%;
 }
