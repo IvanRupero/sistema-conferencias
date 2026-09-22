@@ -67,12 +67,12 @@
 
 /* --- NUEVOS ESTILOS PARA EL PANEL DE INICIO (INDEX) --- */
 
-/* --- ESTILOS CORREGIDOS PARA EL PANEL DE INICIO (INDEX) --- */
+/* --- ESTILOS FINALES PARA EL PANEL DE INICIO (INDEX) --- */
 
 .hero-admin-section {
     position: relative;
     width: 100%;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 120px);
     background: linear-gradient(135deg, rgba(33, 37, 41, 0.88), rgba(20, 108, 49, 0.82)), 
                 url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop') no-repeat center center;
     background-size: cover;
@@ -80,10 +80,11 @@
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
+    margin-top: -20px;
 }
 
 .card-welcome-admin {
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(12px);
     border: none !important;
     border-radius: 20px !important;
@@ -92,12 +93,11 @@
     width: 100%;
 }
 
-/* Icono corporativo superior */
 .admin-icon-badge {
     width: 70px;
     height: 70px;
-    background-color: var(--teschi-dark);
-    color: #d4af37; /* Tono dorado ejecutivo */
+    background-color: #212529 !important;
+    color: #d4af37 !important;
     font-size: 1.8rem;
     display: flex;
     align-items: center;
@@ -110,7 +110,7 @@
 .badge-jefatura {
     display: inline-block;
     background-color: rgba(27, 133, 63, 0.1);
-    color: var(--teschi-green-dark);
+    color: #146c31;
     font-weight: 600;
     font-size: 0.85rem;
     padding: 6px 16px;
@@ -121,7 +121,7 @@
 .brand-title {
     font-size: 2.4rem;
     font-weight: 800;
-    color: var(--teschi-dark);
+    color: #212529;
     letter-spacing: -0.5px;
     margin-bottom: 8px;
 }
@@ -133,15 +133,14 @@
 }
 
 .divider-teschi {
-    background-color: var(--teschi-green);
+    background-color: #1b853f !important;
     height: 3px;
     opacity: 1;
     border: none;
 }
 
-/* Botón principal completamente visible y estilizado */
 .btn-admin-hero {
-    background-color: var(--teschi-green) !important;
+    background-color: #1b853f !important;
     color: #ffffff !important;
     font-size: 1.1rem;
     padding: 14px 32px;
@@ -155,7 +154,7 @@
 }
 
 .btn-admin-hero:hover {
-    background-color: var(--teschi-green-dark) !important;
+    background-color: #146c31 !important;
     color: #ffffff !important;
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(20, 108, 49, 0.6);
