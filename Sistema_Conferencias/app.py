@@ -1,4 +1,4 @@
-import os 
+import os  # <--- Esta línea es la que te faltaba arriba del todo
 from datetime import datetime
 import io
 import re
@@ -8,9 +8,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
+app.config['PREFERRED_URL_SCHEME'] = 'https'  # <--- Agrega esta línea para forzar HTTPS
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///conferencias.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'clave_secura_teschi_2026'
