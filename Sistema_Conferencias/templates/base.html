@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Conferencias - TESCHI</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Barra de Navegación Institucional -->
+    <nav class="navbar navbar-dark navbar-institucional shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+                <span class="badge bg-success fs-6">TESCHI</span>
+                <span>División de Administración | Control de Conferencias</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal Dinámico -->
+    <main class="container my-auto py-5">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-white text-center py-3 border-top mt-auto text-muted small">
+        Tecnológico de Estudios Superiores de Chimalhuacán &copy; 2026 - Sistema de Residencias Profesionales
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

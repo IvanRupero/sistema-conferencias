@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card card-institucional p-4 bg-white shadow-sm">
+            <div class="text-center mb-4">
+                <span class="badge bg-success mb-2">Registro de Asistencia</span>
+                <h3 class="fw-bold text-dark">{{ conferencia.titulo }}</h3>
+                <p class="text-muted small mb-1">Ponente: {{ conferencia.ponente }}</p>
+                <p class="text-muted small">Fecha: {{ conferencia.fecha }} | Valor: {{ conferencia.horas }} horas</p>
+            </div>
+
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Matrícula</label>
+                    <input type="text" name="matricula" class="form-control" required placeholder="Ej. 2021452143">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre Completo</label>
+                    <input type="text" name="nombre" class="form-control" required placeholder="Nombre(s) y Apellidos">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Grupo</label>
+                    <input type="text" name="grupo" class="form-control" required placeholder="Ej. 9ISC21 o Licenciatura...">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Correo Electrónico (para recibir tu constancia)</label>
+                    <input type="email" name="correo" class="form-control" required placeholder="alumno@teschi.edu.mx">
+                </div> 
+                <button type="submit" class="btn btn-teschi w-100 py-2">Registrar mi Asistencia</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="/" class="text-decoration-none text-muted small">&larr; Regresar al inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

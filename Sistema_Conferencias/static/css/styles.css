@@ -1,0 +1,45 @@
+:root {
+    --teschi-green: #1b853f;
+    --teschi-green-dark: #146c31;
+    --teschi-dark: #212529;
+}
+
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Navbar institucional */
+.navbar-institucional {
+    background-color: var(--teschi-dark) !important;
+    border-bottom: 4px solid var(--teschi-green);
+}
+
+/* Tarjetas estilo TESCHI (Split o Contenedores limpios) */
+.card-institucional {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Botones con estilo institucional */
+.btn-teschi {
+    background-color: var(--teschi-green);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.btn-teschi:hover {
+    background-color: var(--teschi-green-dark);
+    color: #fff;
+}
+
+.bg-teschi {
+    background-color: var(--teschi-green) !important;
+}

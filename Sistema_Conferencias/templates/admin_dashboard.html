@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2 class="fw-bold text-dark">Panel de Administración</h2>
+        <p class="text-muted">Gestión de conferencias y control de constancias para la División de Administración.</p>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-md-4">
+        <div class="card card-institucional p-4 bg-white shadow-sm">
+            <h4 class="mb-3 text-success fw-bold">Registrar Conferencia</h4>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Título</label>
+                    <input type="text" name="titulo" class="form-control" required placeholder="Ej. Liderazgo Estratégico">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Ponente</label>
+                    <input type="text" name="ponente" class="form-control" required placeholder="Nombre del ponente">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Fecha y Hora</label>
+                    <input type="text" name="fecha" class="form-control" required placeholder="Ej. 10 de Sep, 10:00 hrs">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Horas a Acreditar</label>
+                    <input type="number" name="horas" class="form-control" required placeholder="Ej. 2">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Enlace Microsoft Forms (Opcional)</label>
+                    <input type="url" name="form_url" class="form-control" placeholder="https://forms.office.com/...">
+                </div>
+                <button type="submit" class="btn btn-teschi w-100">Guardar Conferencia</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card card-institucional p-4 bg-white shadow-sm">
+            <h4 class="mb-3 fw-bold text-dark">Conferencias Activas</h4>
+            {% if conferencias %}
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Título</th>
+                                <th>Fecha</th>
+                                <th>Acceso Alumnos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for conf in conferencias %}
+                            <tr>
+                                <td class="fw-semibold">{{ conf.titulo }}<br><small class="text-muted">Ponente: {{ conf.ponente }} ({{ conf.horas }} hrs)</small></td>
+                                <td>{{ conf.fecha }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-outline-success fw-bold" data-bs-toggle="modal" data-bs-target="#modalConf{{ conf.id }}">
+                                        📱 Ver QR y Link
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted text-center my-4">No hay conferencias registradas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- MODALES DE QR Y LINK -->
+{% if conferencias %}
+    {% for conf in conferencias %}
+    <div class="modal fade" id="modalConf{{ conf.id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-success">Acceso a Conferencia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <h6 class="fw-bold text-dark mb-2">{{ conf.titulo }}</h6>
+                    <p class="text-muted small">Escanea este código QR con tu celular (asegúrate de estar conectado a la misma red Wi-Fi):</p>
+                    
+                    <!-- QR apuntando directamente a tu IP local -->
+                    <div class="mb-3 p-2 bg-light border rounded d-inline-block shadow-sm">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=http://192.168.166.56:5000/registro/{{ conf.id }}" alt="Código QR de Registro" class="img-fluid">
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <label class="form-label fw-semibold small text-muted">Enlace directo de registro:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" value="http://192.168.166.56:5000/registro/{{ conf.id }}" id="inputLink{{ conf.id }}" readonly>
+                            <button class="btn btn-outline-success btn-sm fw-bold" onclick="copiarTexto('inputLink{{ conf.id }}')">Copiar</button>
+                        </div>
+                    </div>
+
+                    {% if conf.form_url %}
+                        <div class="alert alert-success py-2 text-start small mb-0">
+                            <span class="fw-bold">Cuestionario Forms vinculado:</span><br>
+                            <a href="{{ conf.form_url }}" target="_blank" class="text-success text-decoration-underline">{{ conf.form_url }}</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card card-institucional p-4 bg-white shadow-sm">
+            <h4 class="mb-4 fw-bold text-dark">Alumnos Registrados y Emisión de Constancias</h4>
+            {% if conferencias %}
+                {% for conf in conferencias %}
+                    <div class="mb-5 p-3 border rounded bg-light">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="text-success fw-bold m-0">{{ conf.titulo }} <small class="text-muted fs-6">({{ conf.ponente }})</small></h5>
+                            {% if conf.asistencias %}
+                                <a href="/constancias-zip/{{ conf.id }}" class="btn btn-sm btn-teschi fw-bold">
+                                    📦 Descargar Todas (.zip)
+                                </a>
+                            {% endif %}
+                        </div>
+
+                        {% if conf.asistencias %}
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered bg-white align-middle mt-2">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Matrícula</th>
+                                            <th>Nombre Completo</th>
+                                            <th>Grupo</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for a in conf.asistencias %}
+                                        <tr>
+                                            <td>{{ a.matricula }}</td>
+                                            <td>{{ a.nombre }}</td>
+                                            <td>{{ a.grupo }}</td>
+                                            <td>
+                                                <a href="/constancia/{{ a.id }}" target="_blank" class="btn btn-sm btn-success">
+                                                    📥 Descargar Constancia PDF
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p class="text-muted small mb-0 italic">Aún no hay alumnos registrados en esta conferencia.</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted text-center">Registra una conferencia para ver los reportes de asistencia.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+function copiarTexto(idInput) {
+    var input = document.getElementById(idInput);
+    input.select();
+    input.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(input.value);
+    alert("¡Enlace copiado al portapapeles!");
+}
+</script>
+{% endblock %}
