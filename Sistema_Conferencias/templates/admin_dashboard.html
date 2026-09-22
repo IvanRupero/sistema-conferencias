@@ -72,7 +72,6 @@
     </div>
 </div>
 
-<!-- MODALES DE QR Y LINK -->
 {% if conferencias %}
     {% for conf in conferencias %}
     <div class="modal fade" id="modalConf{{ conf.id }}" tabindex="-1" aria-hidden="true">
@@ -84,17 +83,16 @@
                 </div>
                 <div class="modal-body text-center">
                     <h6 class="fw-bold text-dark mb-2">{{ conf.titulo }}</h6>
-                    <p class="text-muted small">Escanea este código QR con tu celular (asegúrate de estar conectado a la misma red Wi-Fi):</p>
+                    <p class="text-muted small">Escanea este código QR con tu celular desde cualquier lugar (datos móviles o Wi-Fi):</p>
                     
-                    <!-- QR apuntando directamente a tu IP local -->
                     <div class="mb-3 p-2 bg-light border rounded d-inline-block shadow-sm">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=http://192.168.166.56:5000/registro/{{ conf.id }}" alt="Código QR de Registro" class="img-fluid">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data={{ url_for('registrar_asistencia', conferencia_id=conf.id, _external=True) }}" alt="Código QR de Registro" class="img-fluid">
                     </div>
 
                     <div class="mb-3 text-start">
                         <label class="form-label fw-semibold small text-muted">Enlace directo de registro:</label>
                         <div class="input-group">
-                            <input type="text" class="form-control form-control-sm" value="http://192.168.166.56:5000/registro/{{ conf.id }}" id="inputLink{{ conf.id }}" readonly>
+                            <input type="text" class="form-control form-control-sm" value="{{ url_for('registrar_asistencia', conferencia_id=conf.id, _external=True) }}" id="inputLink{{ conf.id }}" readonly>
                             <button class="btn btn-outline-success btn-sm fw-bold" onclick="copiarTexto('inputLink{{ conf.id }}')">Copiar</button>
                         </div>
                     </div>
@@ -122,7 +120,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h5 class="text-success fw-bold m-0">{{ conf.titulo }} <small class="text-muted fs-6">({{ conf.ponente }})</small></h5>
                             {% if conf.asistencias %}
-                                <a href="/constancias-zip/{{ conf.id }}" class="btn btn-sm btn-teschi fw-bold">
+                                <a href="{{ url_for('descargar_zip_constancias', conferencia_id=conf.id) }}" class="btn btn-sm btn-teschi fw-bold">
                                     📦 Descargar Todas (.zip)
                                 </a>
                             {% endif %}
@@ -146,7 +144,7 @@
                                             <td>{{ a.nombre }}</td>
                                             <td>{{ a.grupo }}</td>
                                             <td>
-                                                <a href="/constancia/{{ a.id }}" target="_blank" class="btn btn-sm btn-success">
+                                                <a href="{{ url_for('generar_constancia', asistencia_id=a.id) }}" target="_blank" class="btn btn-sm btn-success">
                                                     📥 Descargar Constancia PDF
                                                 </a>
                                             </td>
