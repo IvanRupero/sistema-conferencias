@@ -1,5 +1,5 @@
-Flask
-Flask-SQLAlchemy
-Flask-Mail
-ReportLab
-gunicorn
+Flask==3.1.0
+Flask-SQLAlchemy==3.1.1
+Flask-Mail==0.9.1
+reportlab==4.2.5
+gunicorn==22.0.0
