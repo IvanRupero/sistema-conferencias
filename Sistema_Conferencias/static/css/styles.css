@@ -1,88 +1,162 @@
-:root {
-    --teschi-green: #1b853f;
-    --teschi-green-dark: #146c31;
-    --teschi-dark: #212529;
+/* --- NUEVOS COMPLEMENTOS PARA EL PANEL DE INICIO --- */
+
+/* Hero o contenedor principal con imagen de fondo y capa oscura para legibilidad */
+.hero-admin-section {
+    position: relative;
+    background: linear-gradient(135deg, rgba(33, 37, 41, 0.85), rgba(20, 108, 49, 0.80)), 
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    min-height: calc(100vh - 140px); /* Ajuste dinámico para ocupar la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
 }
 
-body {
-    background-color: #f4f6f9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-}
-
-/* Navbar institucional */
-.navbar-institucional {
-    background-color: var(--teschi-dark) !important;
-    border-bottom: 4px solid var(--teschi-green);
-}
-
-/* Tarjetas estilo TESCHI */
-.card-institucional {
-    border: none !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    background-color: #ffffff;
-}
-
-/* Efecto hover elegante para tarjetas */
-.card:hover, .card-institucional:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.08);
-}
-
-/* Botones con estilo institucional */
-.btn-teschi {
-    background-color: var(--teschi-green);
-    color: #fff;
+/* Tarjeta contenedora central con efecto elegante sobre el fondo */
+.card-welcome-admin {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    padding: 40px;
+    max-width: 750px;
+    width: 100%;
+    text-align: center;
 }
 
-.btn-teschi:hover {
-    background-color: var(--teschi-green-dark);
-    color: #fff;
+/* Tipografía específica para resaltar el branding de la carrera */
+.brand-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--teschi-dark);
+    margin-bottom: 10px;
 }
 
-.bg-teschi {
-    background-color: var(--teschi-green) !important;
-}
-
-/* Tipografía y encabezados mejorados */
-h1, h2, h3, h4, h5, h6, .text-bold {
-    font-weight: 700;
-    color: #2c3e50;
-    letter-spacing: -0.5px;
-}
-
-.text-muted {
-    color: #6c757d !important;
-    font-size: 0.9rem;
-}
-
-/* Tablas modernas y limpias para el panel */
-.table {
-    vertical-align: middle;
-}
-
-.table thead th {
-    background-color: #f8f9fa;
-    color: #495057;
-    border-bottom: 2px solid #dee2e6;
+.brand-subtitle {
+    font-size: 1.1rem;
+    color: var(--teschi-green-dark);
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
 }
 
-.table tbody tr {
-    transition: background-color 0.15s ease;
+/* Botón principal estilizado acorde a tu clase .btn-teschi pero con mayor presencia */
+.btn-admin-hero {
+    background-color: var(--teschi-green);
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border-radius: 50px; /* Estilo de botón moderno redondeado (pill) */
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(27, 133, 63, 0.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.table tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.02);
+.btn-admin-hero:hover {
+    background-color: var(--teschi-green-dark);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(20, 108, 49, 0.6);
+}
+
+
+/* --- NUEVOS ESTILOS PARA EL PANEL DE INICIO (INDEX) --- */
+
+/* --- ESTILOS CORREGIDOS PARA EL PANEL DE INICIO (INDEX) --- */
+
+.hero-admin-section {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background: linear-gradient(135deg, rgba(33, 37, 41, 0.88), rgba(20, 108, 49, 0.82)), 
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.card-welcome-admin {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3) !important;
+    max-width: 750px;
+    width: 100%;
+}
+
+/* Icono corporativo superior */
+.admin-icon-badge {
+    width: 70px;
+    height: 70px;
+    background-color: var(--teschi-dark);
+    color: #d4af37; /* Tono dorado ejecutivo */
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.badge-jefatura {
+    display: inline-block;
+    background-color: rgba(27, 133, 63, 0.1);
+    color: var(--teschi-green-dark);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(27, 133, 63, 0.2);
+}
+
+.brand-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--teschi-dark);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.brand-subtitle-text {
+    font-size: 1.05rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.divider-teschi {
+    background-color: var(--teschi-green);
+    height: 3px;
+    opacity: 1;
+    border: none;
+}
+
+/* Botón principal completamente visible y estilizado */
+.btn-admin-hero {
+    background-color: var(--teschi-green) !important;
+    color: #ffffff !important;
+    font-size: 1.1rem;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(27, 133, 63, 0.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+}
+
+.btn-admin-hero:hover {
+    background-color: var(--teschi-green-dark) !important;
+    color: #ffffff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(20, 108, 49, 0.6);
 }
